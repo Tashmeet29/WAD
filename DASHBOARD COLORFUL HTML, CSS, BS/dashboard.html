@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="Description" content="Enter your description here"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Dashboard</title>
+        <style>
+            #c1{
+                background-color: black;
+                color: white;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+
+            #c2{
+                text-align: right;
+                padding-left: 350px;
+            }
+
+            #c3{
+                padding: 20px;
+            }
+
+            a{
+                color: white;
+            }
+
+            li>p {
+                color: white;
+                font-weight: bold;
+                background-color: lightseagreen;
+                padding: 3px;
+            }
+            #close{
+                font-weight: bold;
+                color: white;
+                font-size: large;
+                background-color: red;
+            }
+            #last{
+                font-weight: bold;
+                color: black;
+                background-color: yellow;
+            }
+            #first{
+                font-weight: bold;
+                color: black;
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+<body>
+        <div class="row" id="c1">
+            <div class="col-md-6">
+                <h2>LOGO</h2>
+            </div>
+            <div class="col-md-6">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul class="nav" id="c2">
+                    <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">About-us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <p>12</p>
+                    </li>
+                </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="c3">
+            <h1>Dashboard:</h1>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Team</th>
+                            <th scope="col">All Star</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td scope="row">Lebron</td>
+                            <td>Cavaliers</td>
+                            <td>Yes</td>
+                            <td><button btn btn-primary id="close">&times;</button></td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Dwayne</td>
+                            <td>Heat</td>
+                            <td>Yes</td>
+                            <td><button btn btn-primary id="close">&times;</button></td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Kobe</td>
+                            <td>Lakers</td>
+                            <td>Yes<button btn btn-primary id="last">Last</button></td>
+                            <td><button btn btn-primary id="close">&times;</button></td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Isaiah</td>
+                            <td>Celtics</td>
+                            <td>Yes<button btn btn-primary id="first">First</button></td>
+                            <td><button btn btn-primary id="close">&times;</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card">
+            <div class="card-body"  style="background-color: rgba(32, 178, 171, 0.511); border: 1px solid rgb(21, 120, 82)">
+                <p  style="color: rgb(22, 145, 139);">Feel good about Bootstrap</p>
+            </div>
+            <div class="card-body"  style="background-color: rgba(30, 143, 255, 0.301); border: 1px solid rgb(38, 104, 161)">
+                <p  style="color: dodgerblue;">Feel good about Bootstrap</p>
+            </div>
+            <div class="card-body"  style="background-color: lightgoldenrodyellow; border: 1px solid rgb(198, 213, 34)">
+                <p  style="color: rgb(189, 189, 5);">Feel warmed about Bootstrap</p>
+            </div>
+            <div class="card-body"  style="background-color: lightgoldenrodyellow; border: 1px solid rgb(198, 213, 34)">
+                <p  style="color: rgb(189, 189, 5);">Maybe I should read the docs...</p>
+            </div>
+            <div class="card-body"  style="background-color: rgba(218, 118, 143, 0.511); border: 1px solid rgba(237, 11, 11, 0.699)">
+                <p  style="color: brown; ">Danger zone</p>
+            </div>
+            <div class="card-body"  style="background-color: rgba(218, 118, 143, 0.511); border: 1px solid rgba(237, 11, 11, 0.699)">
+                <p  style="color: brown; ">I really should read the docs...</p>
+            </div>
+        </div>
+        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
+</body>
+</html>
