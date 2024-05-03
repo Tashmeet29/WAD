@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PICT Mobile Website</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        /* Custom CSS Styles */
+        .ui-content {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .ui-input-text, .ui-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<!-- Login Page -->
+<div data-role="page" id="login">
+    <div data-role="header" data-theme="a">
+        <h1>Login</h1>
+        <a href="#home" data-icon="arrow-l">Back</a>
+    </div>
+    <div data-role="content">
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit" data-theme="b">Login</button>
+        </form>
+        <center> <a href="#signup" data-transition="fade" class="ui-btn ui-btn-a">Don't Have An Account? Register</a> </center>
+    </div>
+</div>
+
+<!-- Sign Up Page -->
+<div data-role="page" id="signup">
+    <div data-role="header" data-theme="a">
+        <h1>Sign Up</h1>
+        <a href="#home" data-icon="arrow-l" class="ui-btn-left">Back</a>
+    </div>
+    <div data-role="content">
+        <form id="signupForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" name="fullName" id="fullName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label>Address:</label>
+            <textarea cols="25" rows="7" name="add" id="add"> </textarea>
+
+            <label>Pincode:</label>
+            <input type="text" name="pin" id="pin"> 
+
+            <label>Date of Birth:</label>
+            <input type="date" name="dob" id="dob"> 
+
+
+            <label for="newPassword">Password:</label>
+            <input type="password" name="newPassword" id="newPassword" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+
+            <button type="submit" data-theme="b">Sign Up</button>
+        </form>
+        <center> <a href="newlogin.html" data-transition="fade"> Already Registered? Login </a> </center>
+    </div>
+</div>
+
+<!-- <script>
+    $(document).ready(function() {
+        $('#signupForm').submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+            alert("Registered Successfully");
+            window.location.href = "newlogin.html";
+        });
+    });
+
+    $(document).ready(function() {
+        $('#loginForm').submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+            alert("Logged in Successfully");
+        });
+    });
+</script> -->
+
+<script>
+    // Function to save user data to local storage
+    function saveUserToLocalStorage(user) {
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // Function to check if the user exists and the password is correct
+    function authenticateUser(username, password) {
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].username === username && users[i].password === password) {
+                return true; // User authenticated
+            }
+        }
+        return false; // User not found or password incorrect
+    }
+
+    $(document).ready(function() {
+        $('#signupForm').submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Collect form data
+            var user = {
+                username: $('#email').val(), // Assuming email is the username
+                password: $('#newPassword').val()
+                // Add other user data here if needed
+            };
+
+            // Save user to local storage
+            saveUserToLocalStorage(user);
+            
+            alert("Registered Successfully");
+            window.location.href = "newlogin.html"; // Redirect to login page
+        });
+    });
+
+    $(document).ready(function() {
+        $('#loginForm').submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            // Collect login credentials
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            // Authenticate user
+            if (authenticateUser(username, password)) {
+                alert("Logged in Successfully");
+                // Redirect to dashboard or desired page upon successful login
+            } else {
+                alert("Invalid username or password");
+                // Optionally, display an error message on the login form
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

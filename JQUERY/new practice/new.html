@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICT WEBSITE</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        .ui-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .ui-content, h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div data-role="page" id="home">
+        <div data-role="header">
+            <h1>PICT College</h1>
+        </div>
+        
+        <div data-role="navbar" data-grid="d">
+            <ul>
+                <li><a href="#home" data-icon="home" data-transition="fade" class="ui-btn-active">Home</a></li>
+                <li><a href="#about" selected data-icon="info" data-transition="fade">About</a></li>
+                <li><a href="#contact-us" data-icon="phone" data-transition="fade">Contact-Us</a></li>
+                <li><a href="#department" data-icon="grid" data-transition="fade">Departments</a></li>
+                <li><a href="newlogin.html" data-icon="grid" data-transition="fade">Vmedulife Login</a></li>
+            </ul>
+        </div>
+
+        <h1>Academic Programs</h1>
+        <div data-role="content">
+            <h2>Academic Programs Offered</h2>
+            <p>PICT offers various undergraduate and postgraduate programs in computer science and related fields.</p>
+        </div>
+    </div>
+
+<!-- About Page -->
+<div data-role="page" id="about">
+    <div data-role="header">
+        <a href="#home" data-icon="arrow-l">Back</a>
+        <h1>About PICT</h1>
+    </div>
+    <div data-role="content">
+        <h2>About Pune Institute of Computer Technology</h2>
+        <p>PICT is one of the leading institutes in computer education.</p>
+
+        <h1>Vision</h1>
+        <p>Pune Institute of Computer Technology aspires to be the leader in Higher technical education and research of International repute.</p>
+
+        <h1>Mission</h1>
+        <p>To be the leading and the most sought after institute of education and research in emerging engineering and technology disciplines that attract, retains and sustains gifted individuals of significant potential.</p>
+    </div>
+</div>
+
+<!-- Contact Page -->
+<div data-role="page" id="contact-us">
+    <div data-role="header">
+        <a href="#home" data-icon="arrow-l">Back</a>
+        <h1>Contact Us</h1>
+    </div>
+    <div data-role="content">
+        <h2>Contact Information</h2>
+        <p>Address: Pune Institute of Computer Technology, Pune, India</p>
+        <p>Email: info@pict.edu</p>
+        <p>Phone: +91-222 3333333</p>
+    </div>
+</div>
+
+<!-- Departments Page -->
+<div data-role="page" id="department">
+    <div data-role="header">
+        <a href="#home" data-icon="arrow-l">Back</a>
+        <h1>Departments of PICT</h1>
+    </div>
+    <div data-role="content">
+        <ul>
+            <li>
+                <h2>Information Technology (IT)</h2>
+            </li>
+            <li>
+                <h2>Computer Science (CSE)</h2>
+            </li>
+            <li>
+                <h2>Electronics (Entc)</h2>
+            </li>
+            <li>
+                <h2>Artificial Intelligence and Data Science (AIDS)</h2>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+</body>
+</html>
