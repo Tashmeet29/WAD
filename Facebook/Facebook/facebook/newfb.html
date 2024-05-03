@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .navbar {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button.btn-primary {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1877f2;
+            color: #fff;
+            cursor: pointer;
+        }
+        button.btn-primary:hover {
+            background-color: #135c9e;
+        }
+        .footer {
+            background-color: #f0f2f5;
+            padding: 20px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#">Facebook</a>
+        <form class="form-inline">
+            <div class="form-group mr-2">
+                <input type="text" class="form-control" placeholder="Email or Phone">
+            </div>
+            <div class="form-group mr-2">
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="download.jpeg" alt="Facebook Image">
+            </div>
+            <div class="col-md-6">
+                <h1>Welcome to Facebook</h1>
+                <p>Connect with friends and the world around you on Facebook.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="New password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2024 Facebook
+        </div>
+    </footer>
+
+</body>
+</html>

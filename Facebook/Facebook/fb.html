@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #1877f2; 
+        }
+        .navbar-brand, .navbar-text {
+            color: #fff; 
+        }
+        .form-control {
+            border-radius: 20px;
+        }
+        .footer {
+            background-color: #f0f2f5; 
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Facebook</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <span class="navbar-text">Username</span>
+                    </li>
+                    <li class="nav-item">
+                        <input type="text" class="form-control mr-2" placeholder="Email or Phone">
+                    </li>
+                    <li class="nav-item">
+                        <input type="password" class="form-control mr-2" placeholder="Password">
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary">Log In</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="download.jpeg" class="img-fluid" alt="Facebook Image">
+            </div>
+            <div class="col-md-6">
+                <h1>Welcome to Facebook</h1>
+                <p>Connect with friends and the world around you on Facebook.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="New password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2024 Facebook
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
