@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Box</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 10px;
+        }
+
+        #input1, #input2 {
+            padding: 20px;
+            border: 1px solid black;
+            font-size: larger;
+            width: 250px;
+            margin: 20px;
+            
+        }
+
+        #table1, #table2 {
+            padding: 15px;
+            font-size: large;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 23px;
+        }
+
+        #resultTable {
+            padding: 15px;
+            font-size: large;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-top: 23px;
+            font-weight: bold;
+        } 
+
+        button {
+            padding: 20px;
+            border: 2px solid black;
+            font-size: larger;
+            width: 100px;
+            margin: 20px;
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(95, 158, 160, 0.642);
+        }
+    </style>
+</head>
+<body>
+    <input id="input1"  type="text" placeholder="Enter values like 3#3#3">    
+    <input id="input2"  type="text" placeholder="Enter values like 3#3#3">    
+    <button onclick="promptUserForValues()">OK</button>
+    <div id="table1"></div>
+    <div id="table2"></div>
+    <div id="resultTables"></div>
+
+    <script>
+        function promptUserForValues() {
+            let input1 = document.getElementById('input1').value.split('#').map(Number);
+            let input2 = document.getElementById('input2').value.split('#').map(Number);
+
+            if (input1.length !== 3 || input2.length !== 3) {
+                alert('Please enter in specific format i.e. rows#cols#startNumber');
+                return;
+            }
+
+            let [rows1, cols1, start1 ] = input1;
+            let [rows2, cols2, start2 ] = input2;
+
+            let table1Values = collectValues(rows1, cols1, "Table1");
+            let table2Values = collectValues(rows2, cols2, "Table2");
+
+            document.getElementById('table1').innerHTML = createTable(table1Values, "Table1");
+            document.getElementById('table2').innerHTML = createTable(table2Values, "Table2");
+            document.getElementById('resultTables').innerHTML = createResultTable(table1Values, table2Values);
+        }
+
+        function collectValues(rows, cols, tableName) {
+            let values = [];
+            for(let r=0; r < rows; r++) {
+                let row = [];
+                for(let c = 0; c < cols; c++)
+                {
+                    let value = prompt(`Enter value for ${tableName} row ${r+1}, column ${c+1}: `, "0");
+                    row.push(parseInt(value, 10));
+                }
+                values.push(row);
+            }
+            return values;
+        }
+
+        function createTable(values, tableName) {
+            let tableHTML = `<caption>${tableName}</caption><table>`;
+            values.forEach(row => {
+                tableHTML += '<tr>';
+                row.forEach(value => {
+                    tableHTML += `<td>${value}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+
+        function createResultTable(table1Values, table2Values) {
+            let tableHTML = `<caption>Result Table</caption><table>`;
+            for(let r = 0; r < table1Values.length; r++) {
+                tableHTML += '<tr>';
+                for(c = 0; c < table1Values[r].length; c++) {
+                    let val1 = table1Values[r][c];
+                    let val2 = table2Values[r][c];
+                    let resultValue = (val1 === val2) ? val1 : val1 * val2;
+                    tableHTML += `<td>${resultValue}</td>`;
+                }
+                tableHTML += '</tr>';
+            }
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generation</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: center;
+        }
+        table {
+            margin-top: 10px;
+        }
+
+        #table1, #table2 {
+            padding-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: large;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        #resultTable {
+            padding-top: 10px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: large;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #input1, #input2 {
+            border: 1px solid black;
+            margin: 20px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: larger;
+            width: 250px;
+        }
+
+        button {
+            border: 1px solid black;
+            margin: 20px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: larger;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+        }
+
+        button:hover {
+            background-color: #555555;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <input id="input1" type="text" placeholder="Enter dimensions like 3#3#3">
+    <input id="input2" type="text" placeholder="Enter dimensions like 3#3#3">
+    <button onclick="promptUserForTableValues()">OK</button>
+    <div id="table1"></div>
+    <div id="table2"></div>
+    <div id="resultTable"></div>
+
+    <script>
+        function promptUserForTableValues() {
+            let input1 = document.getElementById('input1').value.split('#').map(Number);
+            let input2 = document.getElementById('input2').value.split('#').map(Number);
+
+            // Check for proper input format
+            if (input1.length !== 3 || input2.length !== 3) {
+                alert("Please enter valid inputs in the format rows#columns#startNumber");
+                return;
+            }
+
+            let [rows1, cols1, start1] = input1;
+            let [rows2, cols2, start2] = input2;
+
+            let table1Values = collectTableValues(rows1, cols1, "Table 1");
+            let table2Values = collectTableValues(rows2, cols2, "Table 2");
+
+            document.getElementById('table1').innerHTML = createTable(table1Values, "Table 1");
+            document.getElementById('table2').innerHTML = createTable(table2Values, "Table 2");
+            document.getElementById('resultTable').innerHTML = createResultTable(table1Values, table2Values);
+        }
+
+        function collectTableValues(rows, cols, tableName) {
+            let values = [];
+            for (let r = 0; r < rows; r++) {
+                let row = [];
+                for (let c = 0; c < cols; c++) {
+                    let value = prompt(`Enter value for ${tableName} row ${r + 1}, column ${c + 1}:`, "0");
+                    row.push(parseInt(value, 10));
+                }
+                values.push(row);
+            }
+            return values;
+        }
+
+        function createTable(values, tableName) {
+            let tableHTML = `<caption>${tableName}</caption><table>`;
+            values.forEach(row => {
+                tableHTML += '<tr>';
+                row.forEach(value => {
+                    tableHTML += `<td>${value}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+
+        function createResultTable(table1Values, table2Values) {
+            let tableHTML = `<caption>Result Table</caption><table>`;
+            for (let r = 0; r < table1Values.length; r++) {
+                tableHTML += '<tr>';
+                for (let c = 0; c < table1Values[r].length; c++) {
+                    let val1 = table1Values[r][c];
+                    let val2 = table2Values[r][c];
+                    let resultValue = (val1 === val2) ? val1 : val1 * val2;
+                    tableHTML += `<td>${resultValue}</td>`;
+                }
+                tableHTML += '</tr>';
+            }
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+    </script>
+</body>
+</html>
