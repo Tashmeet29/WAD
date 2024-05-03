@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cereal Root Recipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .recipe-content {
+            padding: 20px;
+        }
+        .star-rating span {
+            font-size: 35px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .star-rating span.active {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <a href="index.html" class="btn btn-primary mt-3 ms-3">Back to Home</a>
+    <div class="row">
+        <div class="col-12">
+            <div class="recipe-content">
+                <h1>Killer Mushroom Recipe</h1>
+                <p>This hearty root vegetable dish is perfect for a winter meal.</p><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="mushroom.jpg" alt="Cereal Root" width="50%">
+                        <br><br>
+                        <h2>Ingredients</h2>
+                        <ul>
+                            <li>1 lb mushrooms, cleaned and sliced</li>
+                            <li>2 tablespoons olive oil</li>
+                            <li>1 teaspoon salt</li>
+                            <li>1/2 teaspoon black pepper</li>
+                            <li>2 cloves garlic, minced</li>
+                            <li>1 tablespoon chopped fresh parsley</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h2>Instructions</h2>
+                        <ol>
+                            <li>Heat olive oil in a large skillet over medium-high heat.</li>
+                            <li>Add mushrooms and cook until golden brown, about 5-7 minutes.</li>
+                            <li>Season with salt, pepper, and minced garlic. Cook for an additional 2 minutes.</li>
+                            <li>Remove from heat and garnish with chopped parsley.</li>
+                            <li>Serve hot as a side dish or over pasta.</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="killer mushroom.jpg" width="50%">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h3>Rate this Recipe:</h3>
+                        <div class="star-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h3>Comments</h3>
+                        <form id="commentForm"> 
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Comment</label>
+                                <textarea class="form-control" id="comment" rows="3" id="comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll(".star-rating .star");
+        stars.forEach((star, index) => {
+            star.addEventListener("click", () => {
+                resetStars();
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.add("active");
+                }
+            });
+        });
+
+        function resetStars() {
+            stars.forEach(star => {
+                star.classList.remove("active");
+            });
+        };
+
+        // Event listener for comment form submission
+        document.getElementById("commentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            // Get the entered comment from the textarea
+            const comment = document.getElementById("comment").value.trim();
+
+            // Show an alert indicating that the comment has been sent
+            alert("Comment sent: " + comment);
+
+            location.reload();
+
+            // Optional: Clear the comment textarea after submission
+            document.getElementById("comment").value = "";
+        });
+    });
+</script>
+
+
+</body>
+</html>
