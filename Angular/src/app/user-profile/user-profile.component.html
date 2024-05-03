@@ -1,0 +1,37 @@
+<!-- user-profile.component.html -->
+<div class="user-profile-container" *ngIf="currentUser">
+    <h2>User Profile</h2>
+    <table>
+      <tr>
+        <td>ID:</td>
+        <td>{{ currentUser.id }}</td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td>{{ currentUser.name }}</td>
+      </tr>
+      <tr>
+        <td>Username:</td>
+        <td>{{ currentUser.username }}</td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>{{ currentUser.password }}</td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>{{ currentUser.email }}</td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td>{{ currentUser.mobile }}</td>
+      </tr>
+
+      <!-- Add more rows for other user properties -->
+    </table>
+  </div>
+  <p>User Enrolled Successfully <span style="color: green;">✅</span></p>
+  <p>Return to <a routerLink="/course">Courses</a></p>
+
+  
+  

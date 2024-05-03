@@ -1,0 +1,35 @@
+/* user-profile.component.css */
+.user-profile-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 8px;
+    border: 1px solid #ffffff;
+  }
+  
+  h2, td, p {
+    text-align: center;
+    color: white;
+  }
+
+div {
+  background-color: rgba(0, 0, 0, 0.47);
+}
+
+p {
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+}
+  

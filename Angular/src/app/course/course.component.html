@@ -1,0 +1,11 @@
+<div class="course-container">
+    <h2>Available Courses</h2>
+    <div class="course-card" *ngFor="let course of courses">
+      <h2 class="course-title">{{ course.title }}</h2>
+      <p class="course-description">{{ course.description }}</p>
+      <button class="enroll-button" (click)="enroll(course)">Enroll</button>
+      <span class="enrolled-status" *ngIf="course.enrolled">Enrolled</span>
+    </div>
+  </div>
+  <button routerLink="/login">Login</button>
+  
