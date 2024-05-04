@@ -1,0 +1,241 @@
+/* Setting up the project:
+1. Create a new directory for your project.
+Initialize a new Node.js project using npm init.
+Install necessary dependencies: */
+
+
+npm install express mongoose
+
+
+/* Create a new file named app.js for your Express application.*/
+
+/* 2. Connecting to MongoDB:
+First, make sure you have MongoDB installed and running on your machine.
+Use Mongoose to connect to your MongoDB database in your app.js file: */
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/music', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Could not connect to MongoDB', err));
+
+
+/* 3. Creating a Model for Song Details:
+Define a schema for your song details in a separate file, for example, models/song.js: */
+
+
+const mongoose = require('mongoose');
+
+const songSchema = new mongoose.Schema({
+  songName: String,
+  film: String,
+  musicDirector: String,
+  singer: String,
+  actor: String,
+  actress: String
+});
+
+const Song = mongoose.model('Song', songSchema);
+
+module.exports = Song;
+
+/* 4. Creating a Database and Collection:
+MongoDB will create a database and collection automatically when you first save data.
+Ensure that MongoDB is running, and then proceed to insert documents into the collection. */ 
+
+/* 5. Inserting Documents into the Collection:
+In your app.js, create a route to insert documents: */
+
+const express = require('express');
+const router = express.Router();
+const Song = require('../models/song');
+
+router.post('/insertSongs', async (req, res) => {
+  const songs = req.body; // Assuming you're sending an array of songs in the request body
+  try {
+    const insertedSongs = await Song.insertMany(songs);
+    res.send(insertedSongs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error inserting songs');
+  }
+});
+
+module.exports = router;
+
+
+/* 6. Displaying Total Count of Documents and Listing All Documents:
+Create a route to get total count and list of all documents: */
+
+router.get('/allSongs', async (req, res) => {
+  try {
+    const totalCount = await Song.countDocuments();
+    const allSongs = await Song.find();
+    res.send({ totalCount, allSongs });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching songs');
+  }
+});
+
+/* 7. Listing Songs by Specified Music Director:
+Create a route to list songs by a specified music director: */
+
+
+router.get('/songsByMusicDirector/:director', async (req, res) => {
+  const director = req.params.director;
+  try {
+    const songs = await Song.find({ musicDirector: director });
+    res.send(songs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching songs by music director');
+  }
+});
+
+
+/* 8. Listing Songs by Specified Music Director and Singer:
+Create a route to list songs by a specified music director and singer: */
+
+
+router.get('/songsByMusicDirectorAndSinger/:director/:singer', async (req, res) => {
+  const { director, singer } = req.params;
+  try {
+    const songs = await Song.find({ musicDirector: director, singer: singer });
+    res.send(songs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching songs by music director and singer');
+  }
+});
+
+
+/* 9. Deleting a Song:
+Create a route to delete a song by its ID: */
+
+router.delete('/deleteSong/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const deletedSong = await Song.findByIdAndDelete(id);
+    res.send(deletedSong);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error deleting song');
+  }
+});
+
+
+/* 10. Adding a New Song:
+Create a route to add a new song: */
+
+router.post('/addSong', async (req, res) => {
+  const newSong = new Song(req.body);
+  try {
+    const savedSong = await newSong.save();
+    res.send(savedSong);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error adding new song');
+  }
+});
+
+
+/* 11. Listing Songs by Specified Singer from Specified Films:
+Create a route to list songs by a specified singer from specified films: */
+
+
+router.get('/songsBySingerAndFilms/:singer/:films', async (req, res) => {
+  const { singer, films } = req.params;
+  const filmsArray = films.split(',');
+  try {
+    const songs = await Song.find({ singer: singer, film: { $in: filmsArray } });
+    res.send(songs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching songs by singer and films');
+  }
+});
+
+
+/* 12. Updating Documents:
+Create a route to update a document by adding actor and actress names: */
+
+
+router.put('/updateSong/:id', async (req, res) => {
+  const id = req.params.id;
+  const { actor, actress } = req.body;
+  try {
+    const updatedSong = await Song.findByIdAndUpdate(id, { $set: { actor: actor, actress: actress } }, { new: true });
+    res.send(updatedSong);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error updating song');
+  }
+});
+
+
+/* 13. Displaying Data in Browser in Tabular Format:
+Create an HTML template to display data in tabular format.
+Use a templating engine like EJS or Handlebars to render the HTML with dynamic data fetched from the server. */
+
+
+
+/* 
+For creating routers :
+====================
+Import Express:
+Ensure that you have Express installed in your project and require it at the beginning of your file. */ 
+
+const express = require('express');
+const router = express.Router();
+
+/* Define Routes:
+Define routes using the router.METHOD() functions, where METHOD is the HTTP method of the request that the middleware function handles (such as GET, POST, PUT, DELETE, etc.). */
+
+router.get('/path', (req, res) => {
+    // Handle GET request
+});
+
+router.post('/path', (req, res) => {
+    // Handle POST request
+});
+
+router.put('/path/:id', (req, res) => {
+    // Handle PUT request with route parameters
+});
+
+router.delete('/path/:id', (req, res) => {
+    // Handle DELETE request with route parameters
+});
+
+/* Accessing Request Data:
+The req object represents the HTTP request and contains properties for the request query string, parameters, body, headers, etc. */
+
+router.get('/example', (req, res) => {
+    const queryParam = req.query.paramName; // Access query parameters
+    const routeParam = req.params.id; // Access route parameters
+    const bodyData = req.body; // Access request body (requires body-parser middleware)
+});
+
+
+/* Sending Response:
+Use the res object to send a response back to the client. */ 
+
+router.get('/example', (req, res) => {
+    res.send('Hello, World!'); // Send a simple response
+});
+
+
+/* Export Router:
+Export the router so that it can be used in your main application file. */
+
+module.exports = router;
+
+/* Mount Router in Main Application:
+In your main application file (e.g., app.js), require the router module and mount it at a specific route. */
+
+const express = require('express');
+const app = express();
+const router = require('./routes/router'); // Assuming router module is in a separate file
+
+app.use('/api', router); // Mount the router at /api path
